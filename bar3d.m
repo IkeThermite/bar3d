@@ -1,4 +1,14 @@
 function h = bar3d( X, Y, Z )
+%BAR3D Can create a 3D bar plot with irregular spacing.
+%
+% bar3d will create a 3D bar plot where the x- and y-coordinates of the
+% center of the columns base are specified in X and Y and the corresponding
+% height of the column is specified in Z. This extends the capabilities of
+% the "bar3" function in MATLAB, as the width and length of the base of the
+% is determined from the surrounding coordinates and does not need to be
+% across both dimensions.
+%
+
 x = [X(:,1) - (X(:,2) - X(:,1)) X X(:,end) + (X(:,end) - X(:,end-1))];
 y = [Y(1,:) - (Y(2,:) - Y(1,:)); Y; Y(end,:) + (Y(end,:) - Y(end-1,:))];   
 x_b = 0.5.*(x(:,2:end) + x(:,1:end-1));
@@ -30,10 +40,5 @@ h(4) = patch([-w_x -w_x w_x w_x] + x, [-w_y -w_y -w_y -w_y] + y, [z 0 0 z], 'b')
 h(5) = patch([w_x w_x w_x w_x] + x, [-w_y -w_y w_y w_y] + y, [z 0 0 z], 'b');
 h(6) = patch([w_x w_x -w_x -w_x] + x, [w_y w_y w_y w_y] + y, [z 0 0 z], 'b');
 set(h,'facecolor','flat','FaceVertexCData',z)
-% set(h, 'edgecolor', 'w');
-% set(h,'facecolor','flat','FaceVertexCData',z,...
-%         'edgecolor', 'none')
-% %     'facelighting', 'none',...
-% %     'edgecolor', 'none',...
 
 end
