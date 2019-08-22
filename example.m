@@ -7,7 +7,7 @@ Z = peaks(X, Y);
 figure('Units', 'centimeters', 'Position', [5 6 25 12])
 subplot(1, 2, 1)
 surf(X, Y, Z)
-title('Surf - Regular Grid');
+title('surf - Regular Grid');
 subplot(1, 2, 2)
 
 X_skew = [repmat(linspace(-1.2, 1.8, 20), 5, 1);
